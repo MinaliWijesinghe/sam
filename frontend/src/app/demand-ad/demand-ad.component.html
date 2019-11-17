@@ -1,0 +1,95 @@
+<div class="row pt-5">
+  <div class="col-md-6 mx-auto">
+    <div class="card rounded-0">
+      <div class="card-header">
+        <h3 class="mb-0">Demand Advertisement</h3>
+
+      </div>
+      <div class="card-body">
+        <form #demandAdForm="ngForm" (ngSubmit)="onSubmit(demandAdForm)">
+          <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="demandAdService.selectedDemandAd._id">
+
+          <div class="form-group">
+            <label for="">Name:</label>
+            <input class="form-control rounded-0" type="text" name="name" #name="ngModel"
+              [(ngModel)]="demandAdService.selectedDemandAd.name" placeholder="Enter Product Name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="">Maximum Price:</label>
+            <input class="form-control rounded-0" type="number" name="maxPrice" #maxPrice="ngModel"
+              [(ngModel)]="demandAdService.selectedDemandAd.maxPrice" placeholder="Enter Maximum Price" required>
+          </div>
+
+          <div class="form-group">
+            <label for="">Minimum Price:</label>
+            <input class="form-control rounded-0" type="number" name="minPrice" #minPrice="ngModel"
+              [(ngModel)]="demandAdService.selectedDemandAd.minPrice" placeholder="Enter Price" required>
+          </div>
+
+          <div class="form-group">
+            <label for="">Quantity(in Kg):</label>
+            <input type="text" name="quantity" #quantity="ngModel"
+              [(ngModel)]="demandAdService.selectedDemandAd.quantity" placeholder="Enter quantity"
+              class="form-control rounded-0" required>
+          </div>
+
+          <div class="form-group">
+            <label for="">Harvesting Date(yyyy/mm/dd)</label>
+            <input type="text" name="hDate" #hDate="ngModel" [(ngModel)]="demandAdService.selectedDemandAd.hDate"
+              placeholder="Enter Harvesting Date" class="form-control rounded-0" required>
+          </div>
+
+          <div class="form-group">
+            <label for="">Expiry Date(yyyy/mm/dd)</label>
+            <input type="text" name="eDate" #eDate="ngModel" [(ngModel)]="demandAdService.selectedDemandAd.eDate"
+              placeholder="Enter Harvesting Date" class="form-control rounded-0" required>
+          </div>
+
+          <div class="form-group">
+            <label for="">Description:</label>
+            <input class="form-control rounded-0" type="text" name="des" #des="ngModel"
+              [(ngModel)]="demandAdService.selectedDemandAd.des" placeholder="describe your harvest" required>
+          </div>
+
+          <button (click)="resetForm(demandAdForm)" type="button" class="btn btn-primary float-left">Clear</button>
+          <button type="submit" class="btn btn-primary float-right" [disabled]="!demandAdForm.valid">Submit</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <table class="table table-striped" style="width: 50%">
+    <thead>
+      <tr>
+        <th scope="col">Product</th>
+        <th scope="col">Max Price</th>
+        <th scope="col">Min Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Harvesting Date</th>
+        <th scope="col">Expiry Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dem of demandAdService.demandAds">
+        <td>{{dem.name}}</td>
+        <td>{{dem.minPrice}}</td>
+        <td>{{dem.maxPrice}}</td>
+        <td>{{dem.quantity}}</td>
+        <td>{{dem.hDate}}</td>
+        <td>{{dem.eDate}}</td>
+        <td>
+          <a class="btn btn-outline-info" (click)="onEdit(dem)">
+            <i>edit</i>
+          </a>
+          <a class="btn btn-outline-info" (click)="onDelete(dem._id,demandAdForm)">
+            <i>delete</i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

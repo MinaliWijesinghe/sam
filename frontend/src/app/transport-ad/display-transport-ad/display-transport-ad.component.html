@@ -1,0 +1,36 @@
+<table class="table table-striped" style="width: 50%">
+  <thead>
+    <tr>
+      <th scope="col">Vehicle</th>
+      <th scope="col">Pick-up location</th>
+      <th scope="col">destination</th>
+      <th scope="col">Product</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Packaging Method</th>
+      <th scope="col">Minimum Rate</th>
+      <th scope="col">Maximum Rate</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tra of transportAdService.transportAds">
+      <td>{{tra.vehicleType}}</td>
+      <td>{{tra.location}}</td>
+      <td>{{tra.destination}}</td>
+      <td>{{tra.name}}</td>
+      <td>{{tra.quantity}}</td>
+      <td>{{tra.packageType}}</td>
+      <td>{{tra.minPrice}}</td>
+      <td>{{tra.maxPrice}}</td>
+      <td>{{tra.date}}</td>
+      <td>
+        <a class="btn btn-outline-info" (click)="onEdit(tra)">
+          <i>view Advertisement</i>
+        </a>
+        <a class="btn btn-outline-info" (click)="onDelete(tra._id,transportAdForm)">
+          <i>Contact Advertiser</i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,88 @@
+<div class="row pt-5">
+  <div class="col-md-6 mx-auto">
+    <div class="card rounded-0">
+      <div class="card-header">
+        <h3 class="mb-0">Supply Advertisement</h3>
+
+      </div>
+      <div class="card-body">
+        <form #supplyAdForm="ngForm" (ngSubmit)="onSubmit(supplyAdForm)">
+          <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="supplyAdService.selectedSupplyAd._id">
+
+          <div class="form-group">
+            <label for="">Name:</label>
+            <input class="form-control rounded-0" type="text" name="name" #name="ngModel"
+              [(ngModel)]="supplyAdService.selectedSupplyAd.name" placeholder="Enter Product Name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="">Unit Price:</label>
+            <input class="form-control rounded-0" type="number" name="price" #price="ngModel"
+              [(ngModel)]="supplyAdService.selectedSupplyAd.price" placeholder="Enter Price" required>
+          </div>
+
+          <div class="form-group">
+            <label for="">Quantity(in Kg):</label>
+            <input type="text" name="quantity" #quantity="ngModel"
+              [(ngModel)]="supplyAdService.selectedSupplyAd.quantity" placeholder="Enter quantity"
+              class="form-control rounded-0" required>
+          </div>
+
+          <div class="form-group">
+            <label for="">Harvesting Date(yyyy/mm/dd)</label>
+            <input type="text" name="hDate" #hDate="ngModel" [(ngModel)]="supplyAdService.selectedSupplyAd.hDate"
+              placeholder="Enter Harvesting Date" class="form-control rounded-0" required>
+          </div>
+
+          <div class="form-group">
+            <label for="">Expiry Date(yyyy/mm/dd)</label>
+            <input type="text" name="eDate" #eDate="ngModel" [(ngModel)]="supplyAdService.selectedSupplyAd.eDate"
+              placeholder="Enter Harvesting Date" class="form-control rounded-0" required>
+          </div>
+
+          <div class="form-group">
+            <label for="">Description:</label>
+            <input class="form-control rounded-0" type="text" name="des" #des="ngModel"
+              [(ngModel)]="supplyAdService.selectedSupplyAd.des" placeholder="describe your harvest" required>
+          </div>
+
+          <button (click)="resetForm(supplyAdForm)" type="button" class="btn btn-primary float-left">Clear</button>
+          <button type="submit" class="btn btn-primary float-right" [disabled]="!supplyAdForm.valid">Submit</button>
+
+
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <table class="table table-striped" style="width: 50%">
+    <thead>
+      <tr>
+        <th scope="col">Product</th>
+        <th scope="col">Unit Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Harvesting Date</th>
+        <th scope="col">Expiry Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sup of supplyAdService.supplyAds">
+        <td>{{sup.name}}</td>
+        <td>{{sup.price}}</td>
+        <td>{{sup.quantity}}</td>
+        <td>{{sup.hDate}}</td>
+        <td>{{sup.eDate}}</td>
+        <td>
+          <a class="btn btn-outline-info" (click)="onEdit(sup)">
+            <i>edit</i>
+          </a>
+          <a class="btn btn-outline-info" (click)="onDelete(sup._id,supplyAdForm)">
+            <i>delete</i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

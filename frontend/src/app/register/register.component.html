@@ -1,0 +1,104 @@
+<div class="row pt-5">
+  <div class="col-md-6 mx-auto">
+<div class="card rounded-0">
+  <div class="card-header">
+    <h3 class="mb-0">Register</h3>
+
+  </div>
+  <div class="card-body">
+    <form #userForm="ngForm">
+  
+<div class="form-group">
+  <label for="">First Name</label>
+  <input required [(ngModel)]="registerUserData.firstName" name="firstName" type="text" #name="ngModel" [class.is-invalid]="name.invalid && name.touched" class="form-control rounded-0" >
+<small class="text-danger" [class.d-none]="name.valid || name.untouched">Name is required</small>
+</div>
+
+<div class="form-group">
+    <label for="">Last Name</label>
+    <input [(ngModel)]="registerUserData.lastName" name="lastName" type="text" class="form-control rounded-0" required>
+  </div>
+
+    <div class="form-group">
+      <label for="">NIC</label>
+      <input #NIC="ngModel" pattern="(?:19|20)?\d{2}(?:[01235678]\d\d(?<!(?:000|500|36[7-9]|3[7-9]\d|86[7-9]|8[7-9]\d)))\d{4}(?:[vVxX])$" [(ngModel)]="registerUserData.NIC"  [class.is-invalid]="NIC.invalid && NIC.touched" name="NIC" type="text" class="form-control rounded-0" required>
+    
+    <div *ngIf="NIC.errors && (NIC.invalid || NIC.touched)">
+      <small class="text-danger" [class.d-none]="NIC.valid || NIC.untouched" *ngIf="NIC.errors.required">NIC Number is required</small>
+      <small class="text-danger" *ngIf="NIC.errors.pattern">NIC Number is invalid</small>
+    </div>
+  </div>
+
+    <div class="form-group">
+        <label for="">District</label>
+        <select #district="ngModel" [class.is-invalid]="district.invalid && district.touched" class="custom-select" name="district" [(ngModel)]="registerUserData.district"  required>
+          <option value="">--Select your district--</option>
+            <option *ngFor="let district of districts">{{ district }}</option>
+          </select>
+        <small class="text-danger" [class.d-none]="district.valid || district.untouched">Please choose a district</small>
+      </div>
+
+      <div class="form-group">
+          <label for="">Address</label>
+          <input [(ngModel)]="registerUserData.address" name="address" type="text" class="form-control rounded-0" required>
+        </div>
+
+        <div class="form-group">
+            <label for="">Contact No</label>
+            <input #contactNo="ngModel" pattern="^(?:0|94|\+94|0094)?(?:(11|21|23|24|25|26|27|31|32|33|34|35|36|37|38|41|45|47|51|52|54|55|57|63|65|66|67|81|91)(0|2|3|4|5|7|9)|7(0|1|2|5|6|7|8)\d)\d{6}$" [(ngModel)]="registerUserData.contactNo"  [class.is-invalid]="contactNo.invalid && contactNo.touched" name="contactNo" type="tel" class="form-control rounded-0" required>
+          
+          <div *ngIf="contactNo.errors && (contactNo.invalid || contactNo.touched)">
+            <small class="text-danger" [class.d-none]="contactNo.valid || contactNo.untouched" *ngIf="contactNo.errors.required">Phone Number is required</small>
+            <small class="text-danger" *ngIf="contactNo.errors.pattern">Phone Number is invalid</small>
+          </div>
+        </div>
+
+            <div class="form-group" [class.has.error]="email.invalid && email.touched">
+              <label for="email" class="control-lable">Email</label>
+              <input id="email" required [email]="registerUserData.email!==''" #email="ngModel" [(ngModel)]="registerUserData.email" name="email" type="email" class="form-control rounded-0" >
+              <span class="help-block" *ngIf="email.errors?.required && email.touched">
+                Email is required
+              </span>
+              <span class="help-block" *ngIf="email.errors?.email && email.touched">
+                Email is Invalid
+              </span>
+            </div>
+           
+
+            <div class="mb-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="role" value="farmer" [(ngModel)]="registerUserData.role" required>
+                  <label class="form-check-label">farmer</label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="role" value="Buyer" [(ngModel)]="registerUserData.role" required>
+                    <label class="form-check-label">buyer</label>
+                  </div>
+                
+                  <div class="form-check">
+                      <input class="form-check-input" type="radio" name="role" value="Transporter" [(ngModel)]="registerUserData.role" required>
+                      <label class="form-check-label">Transporter</label>
+                    </div>
+                
+              </div>
+
+              <div class="form-group">
+                <label for="">Password</label>
+                <input #password="ngModel" pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})" [(ngModel)]="registerUserData.password"  [class.is-invalid]="password.invalid && password.touched" name="password" type="password" class="form-control rounded-0" required>
+              
+              <div *ngIf="password.errors && (password.invalid || password.touched)">
+                <small class="text-danger" [class.d-none]="password.valid || password.untouched" *ngIf="password.errors.required">Password is required</small>
+                <small class="text-danger" *ngIf="password.errors.pattern">Your password is weak.Insert atleast one lower case character,upper case character and number in 8 characters</small>
+              </div>
+            </div>
+
+              <button [disabled]="userForm.form.invalid" (click)="registerUser()" type="button" class="btn btn-primary float-right" >Submit</button>
+
+</form>
+  </div>
+
+</div>
+  </div>
+
+</div>

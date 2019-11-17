@@ -1,0 +1,125 @@
+<div class="row pt-5">
+  <div class="col-md-6 mx-auto">
+    <div class="card rounded-0">
+      <div class="card-header">
+        <h3 class="mb-0">Transport Advertisement</h3>
+
+      </div>
+      <div class="card-body">
+        <form #transportAdForm="ngForm" (ngSubmit)="onSubmit(transportAdForm)">
+          <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="transportAdService.selectedTransportAd._id">
+
+          <div class="form-group">
+            <label for="">Vehicle Type:</label>
+            <input class="form-control rounded-0" type="text" name="vehicleType" #vehicleType="ngModel"
+              [(ngModel)]="transportAdService.selectedTransportAd.vehicleType" placeholder="Enter Vehicle Type"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="">Pick-up Location:</label>
+            <input class="form-control rounded-0" type="text" name="location" #location="ngModel"
+              [(ngModel)]="transportAdService.selectedTransportAd.location" placeholder="Enter pick-up location"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="">Destination:</label>
+            <input class="form-control rounded-0" type="text" name="destination" #destination="ngModel"
+              [(ngModel)]="transportAdService.selectedTransportAd.destination" placeholder="Enter destination" required>
+          </div>
+
+          <div class="form-group">
+            <label for="">Product Name:</label>
+            <input class="form-control rounded-0" type="text" name="name" #name="ngModel"
+              [(ngModel)]="transportAdService.selectedTransportAd.name" placeholder="Enter Product Name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="">Quantity(in Kg):</label>
+            <input type="text" name="quantity" #quantity="ngModel"
+              [(ngModel)]="transportAdService.selectedTransportAd.quantity" placeholder="Enter quantity"
+              class="form-control rounded-0" required>
+          </div>
+
+          <div class="form-group">
+            <label for="">Packaging method:</label>
+            <input class="form-control rounded-0" type="text" name="packageType" #packageType="ngModel"
+              [(ngModel)]="transportAdService.selectedTransportAd.packageType" placeholder="Enter Packaging method"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="">Maximum Price:</label>
+            <input class="form-control rounded-0" type="number" name="maxPrice" #maxPrice="ngModel"
+              [(ngModel)]="transportAdService.selectedTransportAd.maxPrice" placeholder="Enter Maximum Price" required>
+          </div>
+
+          <div class="form-group">
+            <label for="">Minimum Price:</label>
+            <input class="form-control rounded-0" type="number" name="minPrice" #minPrice="ngModel"
+              [(ngModel)]="transportAdService.selectedTransportAd.minPrice" placeholder="Enter Price" required>
+          </div>
+
+
+
+
+
+          <div class="form-group">
+            <label for="">Date(yyyy/mm/dd)</label>
+            <input type="text" name="date" #name="ngModel" [(ngModel)]="transportAdService.selectedTransportAd.date"
+              placeholder="Enter Harvesting Date" class="form-control rounded-0" required>
+
+            <div class="form-group">
+              <label for="">Description:</label>
+              <input class="form-control rounded-0" type="text" name="des" #des="ngModel"
+                [(ngModel)]="transportAdService.selectedTransportAd.des" placeholder="describe your harvest" required>
+            </div>
+
+          </div>
+          <button (click)="resetForm(transportAdForm)" type="button" class="btn btn-primary float-left">Clear</button>
+          <button type="submit" class="btn btn-primary float-right" [disabled]="!transportAdForm.valid">Submit</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <table class="table table-striped" style="width: 50%">
+    <thead>
+      <tr>
+        <th scope="col">Vehicle</th>
+        <th scope="col">Pick-up location</th>
+        <th scope="col">destination</th>
+        <th scope="col">Product</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Packaging Method</th>
+        <th scope="col">Minimum Rate</th>
+        <th scope="col">Maximum Rate</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tra of transportAdService.transportAds">
+        <td>{{tra.vehicleType}}</td>
+        <td>{{tra.location}}</td>
+        <td>{{tra.destination}}</td>
+        <td>{{tra.name}}</td>
+        <td>{{tra.quantity}}</td>
+        <td>{{tra.packageType}}</td>
+        <td>{{tra.minPrice}}</td>
+        <td>{{tra.maxPrice}}</td>
+        <td>{{tra.date}}</td>
+        <td>
+          <a class="btn btn-outline-info" (click)="onEdit(tra)">
+            <i>edit</i>
+          </a>
+          <a class="btn btn-outline-info" (click)="onDelete(tra._id,transportAdForm)">
+            <i>delete</i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
