@@ -5,7 +5,6 @@ export class TransportAd {
     vehicleType: String;
     packageType: String;
     name: String;
-    minPrice: Number;
     maxPrice: Number;
     quantity: String;
     date: String;

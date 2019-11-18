@@ -30,7 +30,6 @@ export class TransportAdComponent implements OnInit {
       vehicleType: "",
       packageType: "",
       name: "",
-      minPrice: null,
       maxPrice: null,
       quantity: "",
       date: "",

@@ -27,7 +27,6 @@ export class DemandAdComponent implements OnInit {
     this.demandAdService.selectedDemandAd = {
       _id: "",
       name: "",
-      minPrice: null,
       maxPrice: null,
       quantity: "",
       hDate: "",

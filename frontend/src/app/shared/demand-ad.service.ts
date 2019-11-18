@@ -25,6 +25,10 @@ export class DemandAdService {
     return this.http.get(this.baseURL);
   }
 
+  getDemandAd(_id: string) {
+    return this.http.get(this.baseURL + `/${_id}`);
+  }
+
   putDemandAd(dem: DemandAd) {
     return this.http.put(this.baseURL + `/${dem._id}`, dem);
   }

@@ -22,12 +22,6 @@
           </div>
 
           <div class="form-group">
-            <label for="">Minimum Price:</label>
-            <input class="form-control rounded-0" type="number" name="minPrice" #minPrice="ngModel"
-              [(ngModel)]="demandAdService.selectedDemandAd.minPrice" placeholder="Enter Price" required>
-          </div>
-
-          <div class="form-group">
             <label for="">Quantity(in Kg):</label>
             <input type="text" name="quantity" #quantity="ngModel"
               [(ngModel)]="demandAdService.selectedDemandAd.quantity" placeholder="Enter quantity"
@@ -65,7 +59,6 @@
       <tr>
         <th scope="col">Product</th>
         <th scope="col">Max Price</th>
-        <th scope="col">Min Price</th>
         <th scope="col">Quantity</th>
         <th scope="col">Harvesting Date</th>
         <th scope="col">Expiry Date</th>
@@ -75,7 +68,6 @@
     <tbody>
       <tr *ngFor="let dem of demandAdService.demandAds">
         <td>{{dem.name}}</td>
-        <td>{{dem.minPrice}}</td>
         <td>{{dem.maxPrice}}</td>
         <td>{{dem.quantity}}</td>
         <td>{{dem.hDate}}</td>

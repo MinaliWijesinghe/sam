@@ -14,7 +14,6 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     var dem = new DemandAd({
         name: req.body.name,
-        minPrice: req.body.minPrice,
         maxPrice: req.body.maxPrice,
         quantity: req.body.quantity,
         hDate: req.body.hDate,
@@ -43,7 +42,6 @@ router.put('/:id', (req, res) => {
 
     var dem = {
         name: req.body.name,
-        minPrice: req.body.minPrice,
         maxPrice: req.body.maxPrice,
         quantity: req.body.quantity,
         hDate: req.body.hDate,

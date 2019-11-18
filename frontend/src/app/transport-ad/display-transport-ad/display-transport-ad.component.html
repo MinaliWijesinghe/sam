@@ -7,7 +7,7 @@
       <th scope="col">Product</th>
       <th scope="col">Quantity</th>
       <th scope="col">Packaging Method</th>
-      <th scope="col">Minimum Rate</th>
+
       <th scope="col">Maximum Rate</th>
       <th scope="col">Date</th>
     </tr>
@@ -20,14 +20,14 @@
       <td>{{tra.name}}</td>
       <td>{{tra.quantity}}</td>
       <td>{{tra.packageType}}</td>
-      <td>{{tra.minPrice}}</td>
+
       <td>{{tra.maxPrice}}</td>
       <td>{{tra.date}}</td>
       <td>
-        <a class="btn btn-outline-info" (click)="onEdit(tra)">
+        <a class="btn btn-outline-info" (click)="onView(tra._id)">
           <i>view Advertisement</i>
         </a>
-        <a class="btn btn-outline-info" (click)="onDelete(tra._id,transportAdForm)">
+        <a class="btn btn-outline-info">
           <i>Contact Advertiser</i>
         </a>
       </td>

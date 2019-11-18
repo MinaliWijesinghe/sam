@@ -3,7 +3,6 @@
     <tr>
       <th scope="col">Product</th>
       <th scope="col">Max Price</th>
-      <th scope="col">Min Price</th>
       <th scope="col">Quantity</th>
       <th scope="col">Harvesting Date</th>
       <th scope="col">Expiry Date</th>
@@ -13,12 +12,19 @@
   <tbody>
     <tr *ngFor="let dem of demandAdService.demandAds">
       <td>{{dem.name}}</td>
-      <td>{{dem.minPrice}}</td>
       <td>{{dem.maxPrice}}</td>
       <td>{{dem.quantity}}</td>
       <td>{{dem.hDate}}</td>
       <td>{{dem.eDate}}</td>
 
+      <td>
+        <a class="btn btn-outline-info" (click)="onView(dem._id)">
+          <i>view advertisement</i>
+        </a>
+        <a class="btn btn-outline-info">
+          <i>Contact Buyer</i>
+        </a>
+      </td>
     </tr>
   </tbody>
 </table>

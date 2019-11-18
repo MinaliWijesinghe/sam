@@ -23,7 +23,9 @@ export class TransportAdService {
   getTransportAdList() {
     return this.http.get(this.baseURL);
   }
-
+  getTransportAd(_id: string) {
+    return this.http.get(this.baseURL + `/${_id}`);
+  }
   putTransportAd(tra: TransportAd) {
     return this.http.put(this.baseURL + `/${tra._id}`, tra);
   }
@@ -31,7 +33,7 @@ export class TransportAdService {
     return this.http.delete(this.baseURL + `/${_id}`);
   }
 
-/////
+  /////
   getTransportAdbyid(_id: string) {
     return this.http.get(this.baseURL + `/${_id}`);
   }

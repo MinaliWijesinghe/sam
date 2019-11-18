@@ -18,7 +18,6 @@ router.post('/', (req, res) => {
         vehicleType: req.body.vehicleType,
         packageType: req.body.packageType,
         name: req.body.name,
-        minPrice: req.body.minPrice,
         maxPrice: req.body.maxPrice,
         quantity: req.body.quantity,
         date: req.body.date,

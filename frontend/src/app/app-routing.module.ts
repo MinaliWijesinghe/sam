@@ -29,19 +29,19 @@ const routes: Routes = [
     component: EventsComponent
   },
 
-////////new//////////
+  ////////new//////////
   {
     path: 'DesSup/:id',
     component: DesSupComponent
   },
-/////////////////
-  
+  /////////////////
+
   {
-    path: 'DesDem',
+    path: 'DesDem/:id',
     component: DesDemComponent
   },
   {
-    path: 'DesTra',
+    path: 'DesTra/:id',
     component: DesTraComponent
   },
   {

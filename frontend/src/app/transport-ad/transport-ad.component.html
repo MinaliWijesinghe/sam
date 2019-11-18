@@ -56,16 +56,6 @@
           </div>
 
           <div class="form-group">
-            <label for="">Minimum Price:</label>
-            <input class="form-control rounded-0" type="number" name="minPrice" #minPrice="ngModel"
-              [(ngModel)]="transportAdService.selectedTransportAd.minPrice" placeholder="Enter Price" required>
-          </div>
-
-
-
-
-
-          <div class="form-group">
             <label for="">Date(yyyy/mm/dd)</label>
             <input type="text" name="date" #name="ngModel" [(ngModel)]="transportAdService.selectedTransportAd.date"
               placeholder="Enter Harvesting Date" class="form-control rounded-0" required>
@@ -94,7 +84,6 @@
         <th scope="col">Product</th>
         <th scope="col">Quantity</th>
         <th scope="col">Packaging Method</th>
-        <th scope="col">Minimum Rate</th>
         <th scope="col">Maximum Rate</th>
         <th scope="col">Date</th>
       </tr>
@@ -107,7 +96,6 @@
         <td>{{tra.name}}</td>
         <td>{{tra.quantity}}</td>
         <td>{{tra.packageType}}</td>
-        <td>{{tra.minPrice}}</td>
         <td>{{tra.maxPrice}}</td>
         <td>{{tra.date}}</td>
         <td>

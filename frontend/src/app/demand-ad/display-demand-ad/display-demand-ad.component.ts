@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { DemandAdService } from '../../shared/demand-ad.service';
 import { DemandAd } from '../../shared/demand-ad.model';
@@ -9,7 +10,8 @@ import { DemandAd } from '../../shared/demand-ad.model';
 })
 export class DisplayDemandAdComponent implements OnInit {
 
-  constructor(private demandAdService: DemandAdService) { }
+  constructor(private demandAdService: DemandAdService,
+    private _router: Router) { }
 
   ngOnInit() {
     this.demandAdService.getDemandAdList().subscribe((res) => {
@@ -17,4 +19,7 @@ export class DisplayDemandAdComponent implements OnInit {
     });
   }
 
+  onView(id) {
+    this._router.navigate([`/DesDem/${id}`]);
+  }
 }
