@@ -7,23 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-registerUserData = {}
+  registerUserData = {}
   constructor(private _auth: AuthService,
-              private _router: Router) { }
-  districts = ['Ampara','Anuradhapura','Badulla','Batticaloa','Colombo','Galle','Gampaha','Hambantota','Jaffna','Kalutara','Kandy','Kegalle','Kilinochchi','Kurunegala','Mannar', 'Matale', 'Matara','Monaragala','Mullaitivu','Nuwara Eliya','Polonnaruwa','Puttalam','Rathnapura','Trincomalee','Vavuniya' ];
+    private _router: Router) { }
+  districts = ['Ampara', 'Anuradhapura', 'Badulla', 'Batticaloa', 'Colombo', 'Galle', 'Gampaha', 'Hambantota', 'Jaffna', 'Kalutara', 'Kandy', 'Kegalle', 'Kilinochchi', 'Kurunegala', 'Mannar', 'Matale', 'Matara', 'Monaragala', 'Mullaitivu', 'Nuwara Eliya', 'Polonnaruwa', 'Puttalam', 'Rathnapura', 'Trincomalee', 'Vavuniya'];
 
   ngOnInit() {
   }
 
-  registerUser(){
+  registerUser() {
     this._auth.registerUser(this.registerUserData)
-    .subscribe(
-      res => {
-        console.log(res)
-      localStorage.setItem('token', res.token)
-      this._router.navigate(['/special'])
-    },
-      err => console.log(err)
-    )
+      .subscribe(
+        res => {
+          console.log(res)
+          localStorage.setItem('token', res.token)
+          this._router.navigate(['/home'])
+        },
+        err => console.log(err)
+      )
   }
 }

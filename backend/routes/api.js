@@ -57,7 +57,7 @@ router.post('/login', (req, res) => {
       if (!user) {
         res.status(401).send('Invalid NIC')
       } else
-        if (!user.verifyPassword(userData.password)) {
+        if (user.password !== userData.password) {
           res.status(401).send('Invalid password')
         } else {
           let payload = { subject: user._id }
@@ -71,7 +71,6 @@ router.post('/login', (req, res) => {
     }
   })
 })
-
 router.get('/events', (req, res) => {
   let events = [
     {
@@ -160,7 +159,7 @@ router.get('/special', verifyToken, (req, res) => {
 
 
 //////////////////////////////////////
-router.get('/getprofile', verifyToken,(req, res, next) => {
+router.get('/getprofile', verifyToken, (req, res, next) => {
 
   console.log(req.userId)
   User.findOne({ _id: req.userId },
@@ -168,8 +167,8 @@ router.get('/getprofile', verifyToken,(req, res, next) => {
       if (!user)
         return res.status(404).json({ status: false, message: ' User record not found' });
       else
-      res.json(user);
-        // return res.status(200).json({ status: true, user: _.pick(user, ['fullName', 'email']) });
+        res.json(user);
+      // return res.status(200).json({ status: true, user: _.pick(user, ['fullName', 'email']) });
     })
 })
 /////////////////////////////////////////
