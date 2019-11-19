@@ -1,5 +1,6 @@
 export class SupplyAd {
     _id: string;
+    userId: String;
     name: String;
     price: Number;
     quantity: String;

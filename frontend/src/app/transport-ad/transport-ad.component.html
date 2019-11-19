@@ -69,8 +69,14 @@
             <div class="form-group">
                 <label for="">Advertiser:</label>
                 <input class="form-control rounded-0" type="text" name="advertiser" #advertiser="ngModel"
-                  [(ngModel)]="supplyAdService.selectedSupplyAd.advertiser" placeholder="advertiser name" required>
+                  [(ngModel)]="transportAdService.selectedTransportAd.advertiser" placeholder="advertiser name" required>
               </div>
+
+              <div class="form-group">
+                  <label for="">Contact No:</label>
+                  <input class="form-control rounded-0" type="text" name="contactNo" #contactNo="ngModel"
+                    [(ngModel)]="transportAdService.selectedTransportAd.contactNo" placeholder="advertiser contact No" required>
+                </div>
 
           </div>
           <button (click)="resetForm(transportAdForm)" type="button" class="btn btn-primary float-left">Clear</button>
@@ -92,6 +98,9 @@
         <th scope="col">Packaging Method</th>
         <th scope="col">Maximum Rate</th>
         <th scope="col">Date</th>
+        <th scope="col">Adveriser</th>
+        <th scope="col">Contact No</th>
+        <th scope="col">Description</th>
       </tr>
     </thead>
     <tbody>
@@ -104,6 +113,9 @@
         <td>{{tra.packageType}}</td>
         <td>{{tra.maxPrice}}</td>
         <td>{{tra.date}}</td>
+        <td>{{tra.advertiser}}</td>
+        <td>{{tra.contactNo}}</td>
+        <td>{{tra.des}}</td>
         <td>
           <a class="btn btn-outline-info" (click)="onEdit(tra)">
             <i>edit</i>

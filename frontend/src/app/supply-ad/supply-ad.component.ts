@@ -24,6 +24,7 @@ export class SupplyAdComponent implements OnInit {
       form.reset();
     this.supplyAdService.selectedSupplyAd = {
       _id: "",
+      userId:"",
       name: "",
       price: null,
       quantity: "",
@@ -52,7 +53,7 @@ export class SupplyAdComponent implements OnInit {
 
 
   refreshSupplyAdList() {
-    this.supplyAdService.getSupplyAdList().subscribe((res) => {
+    this.supplyAdService.getSupplyAdListbyid().subscribe((res) => {
       this.supplyAdService.supplyAds = res as SupplyAd[];
     });
   }
