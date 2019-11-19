@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { TransportAd } from './transport-ad.model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/observable';
@@ -14,7 +15,8 @@ export class TransportAdService {
   transportAds: TransportAd[];
   readonly baseURL = 'http://localhost:3000/transportAd';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private _router:Router) { }
 
   postTransportAd(tra: TransportAd) {
     return this.http.post(this.baseURL, tra);
@@ -22,6 +24,9 @@ export class TransportAdService {
 
   getTransportAdList() {
     return this.http.get(this.baseURL);
+  }
+  getTransportAdListbyid(){
+    return this.http.get(this.baseURL + '/gettransportadsbyuser');
   }
   getTransportAd(_id: string) {
     return this.http.get(this.baseURL + `/${_id}`);

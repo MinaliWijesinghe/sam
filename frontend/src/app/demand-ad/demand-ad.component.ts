@@ -26,6 +26,7 @@ export class DemandAdComponent implements OnInit {
       form.reset();
     this.demandAdService.selectedDemandAd = {
       _id: "",
+      userId:"",
       name: "",
       maxPrice: null,
       quantity: "",
@@ -53,7 +54,7 @@ export class DemandAdComponent implements OnInit {
     }
   }
   refreshDemandAdList() {
-    this.demandAdService.getDemandAdList().subscribe((res) => {
+    this.demandAdService.getDemandAdListbyid().subscribe((res) => {
       this.demandAdService.demandAds = res as DemandAd[];
     });
   }

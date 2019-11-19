@@ -23,7 +23,7 @@ function verifyToken(req, res, next) {
 
   router.get('/getsupplyadsbyuser',verifyToken, (req, res) => {
 
-    SupplyAd.find({ userId:req.userId ,  eDate: { $gt: new Date().toISOString()}  },(err, docs) => {
+    SupplyAd.find({ userId:req.userId },(err, docs) => {
        if (!err) { res.send(docs); }
        else { console.log('Error in Retriving SupplyAds :' + JSON.stringify(err, undefined, 2)); }
    });

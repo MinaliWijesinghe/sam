@@ -28,21 +28,20 @@ const routes: Routes = [
     path: 'events',
     component: EventsComponent
   },
-
-  ////////new//////////
   {
     path: 'DesSup/:id',
-    component: DesSupComponent
+    component: DesSupComponent,
+    canActivate: [AuthGuard]
   },
-  /////////////////
-
   {
     path: 'DesDem/:id',
-    component: DesDemComponent
+    component: DesDemComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'DesTra/:id',
-    component: DesTraComponent
+    component: DesTraComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'displaySupplyAd',

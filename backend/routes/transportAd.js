@@ -1,18 +1,51 @@
 const express = require('express');
 var router = express.Router();
 var ObjectId = require('mongoose').Types.ObjectId;
+const jwt = require('jsonwebtoken')
 
 var { TransportAd } = require('../models/transportAd');
 
-router.get('/', (req, res) => {
-    TransportAd.find((err, docs) => {
-        if (!err) { res.send(docs); }
-        else { console.log('Error in Retriving TransportAds :' + JSON.stringify(err, undefined, 2)); }
-    });
+function verifyToken(req, res, next) {
+    if (!req.headers.authorization) {
+      return res.status(401).send('Unauthorized request')
+    }
+    let token = req.headers.authorization.split(' ')[1]
+    if (token === 'null') {
+      return res.status(401).send('Unauthorized request')
+    }
+    let payload = jwt.verify(token, 'secretKey')
+    if (!payload) {
+      return res.status(401).send('Unauthorized request')
+    }
+    req.userId = payload.subject
+    next()
+  }
+
+  router.get('/gettransportadsbyuser',verifyToken, (req, res) => {
+
+    TransportAd.find({ userId:req.userId },(err, docs) => {
+       if (!err) { res.send(docs); }
+       else { console.log('Error in Retriving TransportAds :' + JSON.stringify(err, undefined, 2)); }
+   });
 });
 
-router.post('/', (req, res) => {
+router.get("/", (req,res) => {
+    TransportAd.find({
+        date: {
+            $gt: new Date().toISOString()
+        }
+    })
+    .then(docs => {
+        console.log(docs);
+        res.json(docs);
+    })
+    .catch(err => console.log(err));
+});
+
+router.post('/',verifyToken, (req, res) => {
+    console.log('userId'+req.userId)
     var tra = new TransportAd({
+        userId:req.userId,
         location: req.body.location,
         destination: req.body.destination,
         vehicleType: req.body.vehicleType,
@@ -39,7 +72,7 @@ router.get('/:id', (req, res) => {
     TransportAd.findById(req.params.id, (err, doc) => {
         if (!err) { res.send(doc); }
 
-        else { console.log('Error in Retriving Employee:' + JSON.stringify(err, undefined, 2)); }
+        else { console.log('Error in Retriving TransportAd:' + JSON.stringify(err, undefined, 2)); }
     });
 });
 

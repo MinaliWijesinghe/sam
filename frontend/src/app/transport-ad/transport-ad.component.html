@@ -50,14 +50,14 @@
           </div>
 
           <div class="form-group">
-            <label for="">Maximum Price:</label>
+            <label for="">Maximum Rate per Km:</label>
             <input class="form-control rounded-0" type="number" name="maxPrice" #maxPrice="ngModel"
               [(ngModel)]="transportAdService.selectedTransportAd.maxPrice" placeholder="Enter Maximum Price" required>
           </div>
 
           <div class="form-group">
-            <label for="">Date(yyyy/mm/dd)</label>
-            <input type="text" name="date" #name="ngModel" [(ngModel)]="transportAdService.selectedTransportAd.date"
+            <label for="">Date:</label>
+            <input type="date" name="date" #name="ngModel" [(ngModel)]="transportAdService.selectedTransportAd.date"
               placeholder="Enter Harvesting Date" class="form-control rounded-0" required>
 
             <div class="form-group">
