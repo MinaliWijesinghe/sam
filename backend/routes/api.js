@@ -57,7 +57,7 @@ router.post('/login', (req, res) => {
       if (!user) {
         res.status(401).send('Invalid NIC')
       } else
-        if (user.password !== userData.password) {
+        if (!user.verifyPassword(userData.password)) {
           res.status(401).send('Invalid password')
         } else {
           let payload = { subject: user._id }

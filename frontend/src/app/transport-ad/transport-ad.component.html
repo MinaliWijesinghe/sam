@@ -66,6 +66,12 @@
                 [(ngModel)]="transportAdService.selectedTransportAd.des" placeholder="describe your harvest" required>
             </div>
 
+            <div class="form-group">
+                <label for="">Advertiser:</label>
+                <input class="form-control rounded-0" type="text" name="advertiser" #advertiser="ngModel"
+                  [(ngModel)]="supplyAdService.selectedSupplyAd.advertiser" placeholder="advertiser name" required>
+              </div>
+
           </div>
           <button (click)="resetForm(transportAdForm)" type="button" class="btn btn-primary float-left">Clear</button>
           <button type="submit" class="btn btn-primary float-right" [disabled]="!transportAdForm.valid">Submit</button>

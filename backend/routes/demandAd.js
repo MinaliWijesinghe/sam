@@ -19,6 +19,8 @@ router.post('/', (req, res) => {
         hDate: req.body.hDate,
         eDate: req.body.eDate,
         des: req.body.des,
+        advertiser: req.body.advertiser,
+        contactNo: req.body.contactNo
     });
     dem.save((err, doc) => {
         if (!err) { res.send(doc); }
@@ -47,6 +49,8 @@ router.put('/:id', (req, res) => {
         hDate: req.body.hDate,
         eDate: req.body.eDate,
         des: req.body.des,
+        advertiser: req.body.advertiser,
+        contactNo: req.body.contactNo
     };
     DemandAd.findByIdAndUpdate(req.params.id, { $set: dem }, { new: true }, (err, doc) => {
         if (!err) { res.send(doc); }

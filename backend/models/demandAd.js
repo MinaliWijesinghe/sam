@@ -6,7 +6,9 @@ var DemandAd = mongoose.model('DemandAd', {
     quantity: { type: String },
     hDate: { type: String },
     eDate: { type: String },
-    des: { type: String }
+    des: { type: String },
+    advertiser: { type: String},
+    contactNo: {type:String}
 });
 
 module.exports = { DemandAd };

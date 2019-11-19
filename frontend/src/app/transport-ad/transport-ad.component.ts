@@ -33,7 +33,10 @@ export class TransportAdComponent implements OnInit {
       maxPrice: null,
       quantity: "",
       date: "",
-      des: ""
+      des: "",
+      advertiser: "",
+      contactNo:""
+
 
     }
   }

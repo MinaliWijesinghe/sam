@@ -31,7 +31,10 @@ export class DemandAdComponent implements OnInit {
       quantity: "",
       hDate: "",
       eDate: "",
-      des: ""
+      des: "",
+      advertiser: "",
+      contactNo:""
+
 
     }
   }

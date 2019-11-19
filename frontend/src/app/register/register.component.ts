@@ -1,6 +1,8 @@
+import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',

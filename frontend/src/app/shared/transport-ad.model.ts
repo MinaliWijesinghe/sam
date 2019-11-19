@@ -9,4 +9,6 @@ export class TransportAd {
     quantity: String;
     date: String;
     des: String;
+    advertiser: String;
+    contactNo: String;
 }

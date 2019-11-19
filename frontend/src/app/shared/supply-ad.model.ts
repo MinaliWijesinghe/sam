@@ -6,6 +6,10 @@ export class SupplyAd {
     hDate: String;
     eDate: String;
     des: String;
+    advertiser: String;
+    contactNo: String;
+
+    
 
 
 }

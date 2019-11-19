@@ -6,4 +6,6 @@ export class DemandAd {
     hDate: string;
     eDate: string;
     des: string;
+    advertiser: String;
+    contactNo: String;
 }

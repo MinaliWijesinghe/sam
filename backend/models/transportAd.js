@@ -9,7 +9,9 @@ var TransportAd = mongoose.model('TransportAd', {
     maxPrice: { type: Number },
     quantity: { type: String },
     date: { type: String },
-    des: { type: String }
+    des: { type: String },
+    advertiser: { type: String},
+    contactNo: {type:String}
 });
 
 module.exports = { TransportAd };

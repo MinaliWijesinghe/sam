@@ -22,6 +22,8 @@ router.post('/', (req, res) => {
         quantity: req.body.quantity,
         date: req.body.date,
         des: req.body.des,
+        advertiser: req.body.advertiser,
+        contactNo: req.body.contactNo
     });
     tra.save((err, doc) => {
         if (!err) { res.send(doc); }
@@ -56,6 +58,8 @@ router.put('/:id', (req, res) => {
         quantity: req.body.quantity,
         date: req.body.date,
         des: req.body.des,
+        advertiser: req.body.advertiser,
+        contactNo: req.body.contactNo
     };
     TransportAd.findByIdAndUpdate(req.params.id, { $set: tra }, { new: true }, (err, doc) => {
         if (!err) { res.send(doc); }

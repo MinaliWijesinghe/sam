@@ -32,6 +32,8 @@ router.post('/', (req, res) => {
         hDate: req.body.hDate,
         eDate: req.body.eDate,
         des: req.body.des,
+        advertiser: req.body.advertiser,
+        contactNo: req.body.contactNo
     });
     sup.save((err, doc) => {
         if (!err) { res.send(doc); }
@@ -60,6 +62,8 @@ router.put('/:id', (req, res) => {
         hDate: req.body.hDate,
         eDate: req.body.eDate,
         des: req.body.des,
+        advertiser: req.body.advertiser,
+        contactNo: req.body.contactNo
     };
     SupplyAd.findByIdAndUpdate(req.params.id, { $set: sup }, { new: true }, (err, doc) => {
         if (!err) { res.send(doc); }

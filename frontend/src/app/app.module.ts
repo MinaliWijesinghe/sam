@@ -49,7 +49,9 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    
+    
   ],
   providers: [AuthService, AuthGuard, EventService,
     {

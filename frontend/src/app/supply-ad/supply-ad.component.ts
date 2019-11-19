@@ -29,7 +29,9 @@ export class SupplyAdComponent implements OnInit {
       quantity: "",
       hDate: "",
       eDate: "",
-      des: ""
+      des: "",
+      advertiser: "",
+      contactNo:""
 
     }
   }
