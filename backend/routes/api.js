@@ -63,11 +63,102 @@ router.post('/login', (req, res) => {
           let payload = { subject: user._id }
           let token = jwt.sign(payload, 'secretKey')
           res.status(200).send({ token })
+
+          //////
+
         }
+
     }
   })
 })
+router.get('/events', (req, res) => {
+  let events = [
+    {
+      "_id": "1",
+      "name": "Auto Expo",
+      "description": "lorem ipsum",
+      "date": "2012-04-23T18:25:43.511Z"
+    },
+    {
+      "_id": "2",
+      "name": "Auto Expo",
+      "description": "lorem ipsum",
+      "date": "2012-04-23T18:25:43.511Z"
+    },
+    {
+      "_id": "3",
+      "name": "Auto Expo",
+      "description": "lorem ipsum",
+      "date": "2012-04-23T18:25:43.511Z"
+    },
+    {
+      "_id": "4",
+      "name": "Auto Expo",
+      "description": "lorem ipsum",
+      "date": "2012-04-23T18:25:43.511Z"
+    },
+    {
+      "_id": "5",
+      "name": "Auto Expo",
+      "description": "lorem ipsum",
+      "date": "2012-04-23T18:25:43.511Z"
+    },
+    {
+      "_id": "6",
+      "name": "Auto Expo",
+      "description": "lorem ipsum",
+      "date": "2012-04-23T18:25:43.511Z"
+    }
+  ]
+  res.json(events)
+})
 
+router.get('/special', verifyToken, (req, res) => {
+  let events = [
+    {
+      "_id": "1",
+      "name": "Auto Expo Special",
+      "description": "lorem ipsum",
+      "date": "2012-04-23T18:25:43.511Z"
+    },
+    {
+      "_id": "2",
+      "name": "Auto Expo Special",
+      "description": "lorem ipsum",
+      "date": "2012-04-23T18:25:43.511Z"
+    },
+    {
+      "_id": "3",
+      "name": "Auto Expo Special",
+      "description": "lorem ipsum",
+      "date": "2012-04-23T18:25:43.511Z"
+    },
+    {
+      "_id": "4",
+      "name": "Auto Expo Special",
+      "description": "lorem ipsum",
+      "date": "2012-04-23T18:25:43.511Z"
+    },
+    {
+      "_id": "5",
+      "name": "Auto Expo Special",
+      "description": "lorem ipsum",
+      "date": "2012-04-23T18:25:43.511Z"
+    },
+    {
+      "_id": "6",
+      "name": "Auto Expo Special",
+      "description": "lorem ipsum",
+      "date": "2012-04-23T18:25:43.511Z"
+    }
+  ]
+  res.json(events)
+
+})
+
+
+
+//////////////////////////////////////
 router.get('/getprofile', verifyToken, (req, res, next) => {
 
   console.log(req.userId)
@@ -77,7 +168,20 @@ router.get('/getprofile', verifyToken, (req, res, next) => {
         return res.status(404).json({ status: false, message: ' User record not found' });
       else
         res.json(user);
+      // return res.status(200).json({ status: true, user: _.pick(user, ['fullName', 'email']) });
     })
 })
+/////////////////////////////////////////
 
+
+
+module.exports.userProfile = (req, res, next) => {
+  User.findOne({ _id: req._id },
+    (err, user) => {
+      if (!user)
+        return res.status(404).json({ status: false, message: 'User record not found' });
+      else
+        return res.status(200).json({ status: true, user: _.pick(user, ['fullName', 'email']) });
+    })
+}
 module.exports = router

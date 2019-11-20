@@ -25,7 +25,6 @@ export class TransportAdComponent implements OnInit {
       form.reset();
     this.transportAdService.selectedTransportAd = {
       _id: "",
-      userId:"",
       location: "",
       destination: "",
       vehicleType: "",
@@ -56,7 +55,7 @@ export class TransportAdComponent implements OnInit {
     }
   }
   refreshTransportAdList() {
-    this.transportAdService.getTransportAdListbyid().subscribe((res) => {
+    this.transportAdService.getTransportAdList().subscribe((res) => {
       this.transportAdService.transportAds = res as TransportAd[];
     });
   }

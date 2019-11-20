@@ -1,0 +1,5 @@
+.image{
+    background-image:url('../../../assets/images/image1.jpg');
+    background-repeat: no-repeat;
+    height:20cm; background-size:cover; width:auto;
+  }

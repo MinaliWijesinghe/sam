@@ -1,8 +1,8 @@
-<div class="row pt-5">
+<div class="row pt-5 image">
   <div class="col-md-6 mx-auto">
 <div class="card rounded-0">
   <div class="card-header">
-    <h3 class="mb-0">Register</h3>
+    <h3 align="center" class="mb-0">Register</h3>
 
   </div>
   <div class="card-body">
@@ -92,7 +92,6 @@
                 <small class="text-danger" *ngIf="password.errors.pattern">Your password is weak.Insert atleast one lower case character,upper case character and number in 8 characters</small>
               </div>
             </div>
-            
 
               <button [disabled]="userForm.form.invalid" (click)="registerUser()" type="button" class="btn btn-primary float-right" >Submit</button>
 

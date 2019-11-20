@@ -7,3 +7,9 @@
     width: 40%;
     border-radius: 50%;
   }
+
+  .image{
+    background-image:url('../../assets/images/image1.jpg');
+    background-repeat: no-repeat;
+    height:40em; background-size:cover; width:auto;
+  }

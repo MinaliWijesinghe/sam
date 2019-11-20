@@ -23,10 +23,6 @@ export class SupplyAdService {
   getSupplyAdList() {
     return this.http.get(this.baseURL);
   }
-
-  getSupplyAdListbyid(){
-    return this.http.get(this.baseURL + '/getsupplyadsbyuser');
-  }
   getSupplyAd(_id: string) {
     return this.http.get(this.baseURL + `/${_id}`);
   }

@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 var SupplyAd = mongoose.model('SupplyAd', {
-    userId:{ type:String},
     name: { type: String },
     price: { type: Number },
     quantity: { type: String },
@@ -9,9 +8,7 @@ var SupplyAd = mongoose.model('SupplyAd', {
     eDate: { type: String },
     des: { type: String },
     advertiser: { type: String},
-    contactNo: {type:String},
-    userPic:{ type:String },
-    
+    contactNo: {type:String}
 });
 
 module.exports = { SupplyAd };

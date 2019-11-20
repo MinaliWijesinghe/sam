@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 var DemandAd = mongoose.model('DemandAd', {
-    userId:{ type:String},
     name: { type: String },
     maxPrice: { type: Number },
     quantity: { type: String },

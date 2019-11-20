@@ -1,34 +1,8 @@
 const express = require('express');
 var router = express.Router();
 var ObjectId = require('mongoose').Types.ObjectId;
-const jwt = require('jsonwebtoken')
 
 var { SupplyAd } = require('../models/supplyAd');
-
-function verifyToken(req, res, next) {
-    if (!req.headers.authorization) {
-      return res.status(401).send('Unauthorized request')
-    }
-    let token = req.headers.authorization.split(' ')[1]
-    if (token === 'null') {
-      return res.status(401).send('Unauthorized request')
-    }
-    let payload = jwt.verify(token, 'secretKey')
-    if (!payload) {
-      return res.status(401).send('Unauthorized request')
-    }
-    req.userId = payload.subject
-    next()
-  }
-
-  router.get('/getsupplyadsbyuser',verifyToken, (req, res) => {
-
-    SupplyAd.find({ userId:req.userId },(err, docs) => {
-       if (!err) { res.send(docs); }
-       else { console.log('Error in Retriving SupplyAds :' + JSON.stringify(err, undefined, 2)); }
-   });
-});
-
 
 //router.get('/', (req, res) => {
     //SupplyAd.find((err, docs) => {
@@ -50,10 +24,8 @@ router.get("/", (req,res) => {
     .catch(err => console.log(err));
 });
 
-router.post('/', verifyToken, (req, res) => {
-    console.log('userId'+req.userId)
+router.post('/', (req, res) => {
     var sup = new SupplyAd({
-        userId:req.userId,
         name: req.body.name,
         price: req.body.price,
         quantity: req.body.quantity,
@@ -61,8 +33,7 @@ router.post('/', verifyToken, (req, res) => {
         eDate: req.body.eDate,
         des: req.body.des,
         advertiser: req.body.advertiser,
-        contactNo: req.body.contactNo,
-        userPic: req.body.userPic,
+        contactNo: req.body.contactNo
     });
     sup.save((err, doc) => {
         if (!err) { res.send(doc); }
@@ -92,8 +63,7 @@ router.put('/:id', (req, res) => {
         eDate: req.body.eDate,
         des: req.body.des,
         advertiser: req.body.advertiser,
-        contactNo: req.body.contactNo,
-        userPic: req.body.userPic,
+        contactNo: req.body.contactNo
     };
     SupplyAd.findByIdAndUpdate(req.params.id, { $set: sup }, { new: true }, (err, doc) => {
         if (!err) { res.send(doc); }

@@ -50,14 +50,14 @@
           </div>
 
           <div class="form-group">
-            <label for="">Maximum Rate per Km:</label>
+            <label for="">Maximum Price:</label>
             <input class="form-control rounded-0" type="number" name="maxPrice" #maxPrice="ngModel"
               [(ngModel)]="transportAdService.selectedTransportAd.maxPrice" placeholder="Enter Maximum Price" required>
           </div>
 
           <div class="form-group">
-            <label for="">Date:</label>
-            <input type="date" name="date" #name="ngModel" [(ngModel)]="transportAdService.selectedTransportAd.date"
+            <label for="">Date(yyyy/mm/dd)</label>
+            <input type="text" name="date" #name="ngModel" [(ngModel)]="transportAdService.selectedTransportAd.date"
               placeholder="Enter Harvesting Date" class="form-control rounded-0" required>
 
             <div class="form-group">
@@ -69,14 +69,8 @@
             <div class="form-group">
                 <label for="">Advertiser:</label>
                 <input class="form-control rounded-0" type="text" name="advertiser" #advertiser="ngModel"
-                  [(ngModel)]="transportAdService.selectedTransportAd.advertiser" placeholder="advertiser name" required>
+                  [(ngModel)]="supplyAdService.selectedSupplyAd.advertiser" placeholder="advertiser name" required>
               </div>
-
-              <div class="form-group">
-                  <label for="">Contact No:</label>
-                  <input class="form-control rounded-0" type="text" name="contactNo" #contactNo="ngModel"
-                    [(ngModel)]="transportAdService.selectedTransportAd.contactNo" placeholder="advertiser contact No" required>
-                </div>
 
           </div>
           <button (click)="resetForm(transportAdForm)" type="button" class="btn btn-primary float-left">Clear</button>
@@ -98,9 +92,6 @@
         <th scope="col">Packaging Method</th>
         <th scope="col">Maximum Rate</th>
         <th scope="col">Date</th>
-        <th scope="col">Adveriser</th>
-        <th scope="col">Contact No</th>
-        <th scope="col">Description</th>
       </tr>
     </thead>
     <tbody>
@@ -113,9 +104,6 @@
         <td>{{tra.packageType}}</td>
         <td>{{tra.maxPrice}}</td>
         <td>{{tra.date}}</td>
-        <td>{{tra.advertiser}}</td>
-        <td>{{tra.contactNo}}</td>
-        <td>{{tra.des}}</td>
         <td>
           <a class="btn btn-outline-info" (click)="onEdit(tra)">
             <i>edit</i>

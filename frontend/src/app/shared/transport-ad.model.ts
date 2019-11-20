@@ -1,6 +1,5 @@
 export class TransportAd {
     _id: string;
-    userId: String;
     location: String;
     destination: String;
     vehicleType: String;

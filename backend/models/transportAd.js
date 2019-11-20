@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 var TransportAd = mongoose.model('TransportAd', {
-    userId:{ type:String},
     location: { type: String },
     destination: { type: String },
     vehicleType: { type: String },
