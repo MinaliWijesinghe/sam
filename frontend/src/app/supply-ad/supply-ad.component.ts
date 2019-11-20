@@ -11,7 +11,8 @@ import { SupplyAd } from '../shared/supply-ad.model';
   providers: [SupplyAdService]
 })
 export class SupplyAdComponent implements OnInit {
-
+  pic;
+  preview;
   constructor(private supplyAdService: SupplyAdService) { }
 
   ngOnInit() {
@@ -24,6 +25,7 @@ export class SupplyAdComponent implements OnInit {
       form.reset();
     this.supplyAdService.selectedSupplyAd = {
       _id: "",
+      userId:"",
       name: "",
       price: null,
       quantity: "",
@@ -31,11 +33,13 @@ export class SupplyAdComponent implements OnInit {
       eDate: "",
       des: "",
       advertiser: "",
-      contactNo:""
+      contactNo:"",
+      userPic:" ",
 
     }
   }
   onSubmit(form: NgForm) {
+    form.value.userPic=this.preview;
     if (form.value._id == "") {
       this.supplyAdService.postSupplyAd(form.value).subscribe((res) => {
         this.resetForm(form);
@@ -52,7 +56,7 @@ export class SupplyAdComponent implements OnInit {
 
 
   refreshSupplyAdList() {
-    this.supplyAdService.getSupplyAdList().subscribe((res) => {
+    this.supplyAdService.getSupplyAdListbyid().subscribe((res) => {
       this.supplyAdService.supplyAds = res as SupplyAd[];
     });
   }
@@ -67,6 +71,15 @@ export class SupplyAdComponent implements OnInit {
         this.refreshSupplyAdList();
         this.resetForm(form);
       });
+    }
+  }
+  addPic(event){
+    this.pic=(event.target as HTMLInputElement).files[0];
+
+    const reader = new FileReader();
+    reader.readAsDataURL(this.pic);
+    reader.onload = () => {
+      this.preview = reader.result as string;
     }
   }
 }

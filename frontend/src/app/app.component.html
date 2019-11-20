@@ -36,6 +36,8 @@
             Up</a>
           <a class="nav-link" style="cursor:pointer" *ngIf="_authService.loggedIn()"
             (click)="_authService.logoutUser()">Logout</a>
+            <a class="nav-link" style="cursor:pointer" *ngIf="_authService.loggedIn()"
+            href="/userProfile">Profile</a>
         </ul>
 
       </ul>

@@ -7,10 +7,8 @@ import { DemandAdComponent } from './demand-ad/demand-ad.component';
 import { HomeComponent } from './home/home.component';
 import { SupplyAdComponent } from './supply-ad/supply-ad.component';
 import { AuthGuard } from './auth.guard';
-import { SpecialEventsComponent } from './special-events/special-events.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { EventsComponent } from './events/events.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DesDemComponent } from './demand-ad/des-dem/des-dem.component';
@@ -25,24 +23,19 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'events',
-    component: EventsComponent
-  },
-
-  ////////new//////////
-  {
     path: 'DesSup/:id',
-    component: DesSupComponent
+    component: DesSupComponent,
+    canActivate: [AuthGuard]
   },
-  /////////////////
-
   {
     path: 'DesDem/:id',
-    component: DesDemComponent
+    component: DesDemComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'DesTra/:id',
-    component: DesTraComponent
+    component: DesTraComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'displaySupplyAd',
@@ -73,13 +66,6 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent
   },
-
-
-  {
-    path: 'special',
-    component: SpecialEventsComponent,
-    canActivate: [AuthGuard]
-  },
   {
     path: 'login',
     component: LoginComponent
@@ -90,7 +76,7 @@ const routes: Routes = [
   },
   {
     path: 'userProfile',
-    component: UserProfileComponent
+    component: UserProfileComponent, canActivate: [AuthGuard]
   }
 ];
 

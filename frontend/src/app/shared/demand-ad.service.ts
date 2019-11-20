@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/observable';
 import { HttpClient } from '@angular/common/http';
@@ -15,7 +16,7 @@ export class DemandAdService {
   demandAds: DemandAd[];
   readonly baseURL = 'http://localhost:3000/demandAd';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private _router:Router) { }
 
   postDemandAd(dem: DemandAd) {
     return this.http.post(this.baseURL, dem);
@@ -23,6 +24,10 @@ export class DemandAdService {
 
   getDemandAdList() {
     return this.http.get(this.baseURL);
+  }
+
+  getDemandAdListbyid(){
+    return this.http.get(this.baseURL + '/getdemandadsbyuser');
   }
 
   getDemandAd(_id: string) {

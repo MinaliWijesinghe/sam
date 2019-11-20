@@ -1,5 +1,6 @@
 export class SupplyAd {
     _id: string;
+    userId: String;
     name: String;
     price: Number;
     quantity: String;
@@ -8,8 +9,5 @@ export class SupplyAd {
     des: String;
     advertiser: String;
     contactNo: String;
-
-    
-
-
+    userPic: String;
 }
