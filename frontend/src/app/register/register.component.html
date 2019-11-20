@@ -92,6 +92,7 @@
                 <small class="text-danger" *ngIf="password.errors.pattern">Your password is weak.Insert atleast one lower case character,upper case character and number in 8 characters</small>
               </div>
             </div>
+            
 
               <button [disabled]="userForm.form.invalid" (click)="registerUser()" type="button" class="btn btn-primary float-right" >Submit</button>
 

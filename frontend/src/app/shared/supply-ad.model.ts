@@ -9,8 +9,5 @@ export class SupplyAd {
     des: String;
     advertiser: String;
     contactNo: String;
-
-    
-
-
+    userPic: String;
 }

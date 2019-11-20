@@ -9,7 +9,8 @@ var SupplyAd = mongoose.model('SupplyAd', {
     eDate: { type: String },
     des: { type: String },
     advertiser: { type: String},
-    contactNo: {type:String}
+    contactNo: {type:String},
+    userPic:{ type:String },
     
 });
 

@@ -12,7 +12,8 @@ const userSchema = new Schema({
     contactNo: { type: String, required: true },
     email: { type: String, required: true, lowercase: true, unique: true, index: true },
     role: { type: String, required: true },
-    password: { type: String, required: true }
+    password: { type: String, required: true },
+    
 });
 
 userSchema.plugin(uniqueValidator);

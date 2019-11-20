@@ -61,7 +61,8 @@ router.post('/', verifyToken, (req, res) => {
         eDate: req.body.eDate,
         des: req.body.des,
         advertiser: req.body.advertiser,
-        contactNo: req.body.contactNo
+        contactNo: req.body.contactNo,
+        userPic: req.body.userPic,
     });
     sup.save((err, doc) => {
         if (!err) { res.send(doc); }
@@ -91,7 +92,8 @@ router.put('/:id', (req, res) => {
         eDate: req.body.eDate,
         des: req.body.des,
         advertiser: req.body.advertiser,
-        contactNo: req.body.contactNo
+        contactNo: req.body.contactNo,
+        userPic: req.body.userPic,
     };
     SupplyAd.findByIdAndUpdate(req.params.id, { $set: sup }, { new: true }, (err, doc) => {
         if (!err) { res.send(doc); }
